@@ -8,7 +8,9 @@ posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
   api_host: import.meta.env.VITE_POSTHOG_HOST,
   session_recording: {
     maskAllInputs: false,
-  }
+  },
+  enable_recording_console_log: true, // Helps you see "console.error" in replays
+  disable_session_recording: false,
 })
 
 function App() {
