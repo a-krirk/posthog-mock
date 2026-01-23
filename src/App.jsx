@@ -4,10 +4,10 @@ import posthog from 'posthog-js'
 import './App.css'
 
 // 1. Initialize PostHog
-posthog.init('YOUR_POSTHOG_API_KEY_HERE', {
-  api_host: 'https://us.i.posthog.com', // or 'https://eu.i.posthog.com'
+posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
+  api_host: import.meta.env.VITE_POSTHOG_HOST,
   session_recording: {
-    maskAllInputs: false, // Easier to debug for mock apps
+    maskAllInputs: false,
   }
 })
 
