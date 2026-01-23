@@ -41,8 +41,21 @@ function App() {
 
   // Simulate an Error for "Dev View"
   const triggerError = () => {
-    console.error("Critical Payment Failure!")
-    throw new Error("Mock Payment 500 Error")
+    try {
+      console.error("Critical Payment Failure!")
+      // Simulate the crash logic
+      throw new Error("Mock Payment 500 Error")
+    } catch (error) {
+      // 1. Manually send the specific '$exception' event to PostHog
+      posthog.capture('$exception', { 
+        $exception_type: error.name, 
+        $exception_message: error.message,
+        $exception_stack: error.stack
+      })
+      
+      // 2. Alert you so you know it happened
+      alert("Error caught and sent to PostHog!")
+    }
   }
 
   return (
