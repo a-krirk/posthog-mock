@@ -57,27 +57,39 @@ function Home() {
 }
 
 // --- Page 2: Pricing (The Middle Funnel) ---
+// --- Component: Pricing Page (Fixed) ---
 function Pricing() {
   return (
-    <div style={{ padding: '2rem', textAlign: 'center', background: '#f0f0f0', minHeight: '80vh' }}>
+    <div style={{ 
+      padding: '2rem', 
+      textAlign: 'center', 
+      background: '#f0f0f0', 
+      minHeight: '80vh',
+      color: '#333' // <--- FIX: Forces text to be dark grey/black
+    }}>
       <h2>Pricing Plans</h2>
       <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
+        
+        {/* Free Plan */}
         <div style={{ border: '1px solid #ccc', padding: '20px', background: 'white', borderRadius: '8px' }}>
           <h3>Free</h3>
           <p>$0/mo</p>
         </div>
+
+        {/* Pro Plan */}
         <div style={{ border: '2px solid #007bff', padding: '20px', background: 'white', borderRadius: '8px' }}>
           <h3>Pro</h3>
           <p>$99/mo</p>
           <Link to="/signup">
             <button 
               onClick={() => posthog.capture('selected_pro_plan')}
-              style={{ background: '#007bff', color: 'white', padding: '10px', marginTop: '10px', borderRadius: '4px', cursor: 'pointer' }}
+              style={{ background: '#007bff', color: 'white', padding: '10px', marginTop: '10px', borderRadius: '4px', cursor: 'pointer', border: 'none' }}
             >
               Choose Pro
             </button>
           </Link>
         </div>
+
       </div>
     </div>
   )
