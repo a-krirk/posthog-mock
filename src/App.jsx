@@ -11,6 +11,8 @@ posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
   enable_recording_console_log: true
 })
 
+window.posthog = posthog;
+
 // --- Helper: Track Pageviews on Route Change ---
 function PageTracker() {
   const location = useLocation()
